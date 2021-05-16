@@ -15,7 +15,7 @@ with open(os.path.join(HERE, "README.md")) as fid:
 
 setup(name='mawaqit_times_calculator',
       version='0.0.2',
-      description='Mawaqit Times Calculator',
+      description='Mawaqit_Times_Calculator',
       url='https://github.com/yac69/mawaqit_times_calculator',
       download_url = 'https://github.com/yac69/mawaqit_times_calculator/archive/refs/tags/0.0.2.tar.gz',
       author='Yacine Zitouni',
