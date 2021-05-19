@@ -28,7 +28,7 @@ class MawaqitTimesCalculator:
 
 
 
-        if self._mosquee == '': 
+        if self._mosquee == '' and len(self.all_mosques_neighberhood())>0: 
             self._mosque = self.all_mosques_neighberhood()[0]["uuid"]
         else: self._mosque = mosquee
 
