@@ -44,14 +44,11 @@ class MawaqitTimesCalculator:
       user = self._login
       password = self._password
       response = requests.get(url, auth=(user, password))
-      # if needed to save locally
-      #current_dir = os.path.dirname(os.path.realpath(__file__))
-      #if not os.path.exists('{}/data'.format(current_dir)):
-      #  os.makedirs('{}/data'.format(current_dir))
-      #text_file = open('{}/data/api.txt'.format(current_dir), "w")
-      #n = text_file.write(response.json()["apiAccessToken"])
-      #text_file.close()
+      if not response.status_code == 200:
+          raise InvalidResponseError(f"\nUnable to retrive api key Url: {url}")
       return response.json()["apiAccessToken"]
+
+
 
     def post_and_get_json(self, url, params=None, data=None, headers=None):
       import time
@@ -94,6 +91,8 @@ class MawaqitTimesCalculator:
       s1 = response.json()["times"][0]
       formater = '%H:%M'
       d = datetime.strptime(s1, formater) - timedelta(hours=0, minutes=10)
+      if not response.status_code == 200:
+          raise InvalidResponseError(f"\nUnable to retrive prayer times Url: {url}")
 
       if response.status_code == 200:
       	  
